@@ -80,6 +80,8 @@ services = {
   };
   services.joinmarket-ob-watcher.enable = true;
 
+  services.mempool.enable = true;
+
   nix-bitcoin-org.website = {
     enable = true;
     donate.btcpayserverAppId = "4D1Dxb5cGnXHRgNRBpoaraZKTX3i";
