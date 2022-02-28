@@ -1,4 +1,4 @@
 builtins.fetchTarball {
-  url = "https://github.com/nixbitcoin/nix-bitcoin/archive/1915e0112664eebf6767a6518e52d6a23fb2fe56.tar.gz";
-  sha256 = "sha256-75Ik0T6vZpONvUd8pZoc1jBloHIOw3E3df1wBRIen6g=";
+  url = "https://github.com/nixbitcoin/nix-bitcoin/archive/1a10aa37226fd8c088ac46d6596fd2f5ee6e1c89.tar.gz";
+  sha256 = "sha256-jMDbn384591P9x6ED1wVD1wr+hKX0z4KWdUgK4+JBXQ=";
 }
