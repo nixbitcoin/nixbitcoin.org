@@ -51,8 +51,9 @@ rec {
         };
       in {
         "nixbitcoin.org" = disableACME;
-        "synapse.nixbitcoin.org" = disableACME;
         "element.nixbitcoin.org" = disableACME;
+        "mempool.nixbitcoin.org" = disableACME;
+        "synapse.nixbitcoin.org" = disableACME;
       };
     # Disable mailserver because it has no option for fast offline cert generation.
     # `mailserver.certificateScheme = 2` works offline but is too slow.
