@@ -22,7 +22,7 @@ if [[ ${1:-} == remount ]]; then
     exit
 fi
 
-initDisk() {
+formatDisk() {
   disk=$1
   sgdisk --zap-all \
    -n 0:0:+1MiB      -t 0:ef02 -c 0:bios-boot \
@@ -30,8 +30,8 @@ initDisk() {
    -n 0:0:+$swapSize -t 0:8200 -c 0:swap \
    -n 0:0:0          -t 0:bf01 -c 0:root $disk
 }
-initDisk $disk1
-initDisk $disk2
+formatDisk $disk1
+formatDisk $disk2
 mkfs.fat -n boot1 ${disk1}2
 mkfs.fat -n boot2 ${disk2}2
 mkswap -L swap1 ${disk1}3
@@ -66,7 +66,7 @@ zpool create -f \
 zfs create -o mountpoint=/ -o canmount=on rpool/root
 zfs create -o mountpoint=/nix -o canmount=on rpool/nix
 # Create dataset optimized for RDBMS like postgres or mysql
-# https://openzfs.github.io/openzfs-docs/Performance%20and%20Tuning/Workload%20Tuning.html?highlight=logbias#database-workloads
+# https://openzfs.github.io/openzfs-docs/Performance%20and%20Tuning/Workload%20Tuning.html?#database-workloads
 zfs create -o mountpoint=/var/lib/db -o canmount=on \
   -o recordsize=8K \
   -o primarycache=metadata \
