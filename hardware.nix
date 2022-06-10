@@ -5,7 +5,7 @@
 let
   # When a device marked with `nonessentialDevice` is unavailable,
   # booting succeeds and systemd marks the system as degraded.
-  # This allows the system to run when one device fails.
+  # This allows the system to boot when one device fails.
   nonessentialDevice = [
     "nofail"
     "x-systemd.device-timeout=10s"
