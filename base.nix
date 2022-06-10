@@ -43,6 +43,11 @@ with lib;
     pv
   ];
 
+  systemd.services.mempool.wantedBy = mkForce [];
+  systemd.services.fulcrum.wantedBy = mkForce [];
+  systemd.services.electrs.wantedBy = mkForce [];
+  # systemd.services.matrix-synapse.wantedBy = mkForce [];
+
   boot.cleanTmpDir = true;
   documentation.nixos.enable = false; # Speeds up evaluation
 
