@@ -6,6 +6,7 @@
     ./base.nix
     ./website
     ./matrix.nix
+    ./backup.nix
   ];
 
   nix-bitcoin.onionServices.bitcoind.public = true;
@@ -62,10 +63,6 @@
     donate.btcpayserverAppId = "4UBP6BKosiDyoNbcBUD1uzK7aDHB";
   };
 
-  services.backups = {
-    enable = true;
-    destination = "sftp://nixbitcoin@freak.seedhost.eu";
-  };
   programs.ssh.knownHosts."freak.seedhost.eu".publicKey = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD2TmdE89ZD4XshcIcXZPLFC/nDxZdAr9yrH2/2OCNKEo/Ex60y8TQjp93isjdDj7Grf/GpW60OONfXTFe0r5iM=";
 
   # TODO-EXTERNAL
