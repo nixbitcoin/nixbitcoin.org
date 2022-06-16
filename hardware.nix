@@ -13,9 +13,10 @@ let
 
   hetznerDedicated = {
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "sd_mod" ];
-    boot.kernelModules = [ "kvm-amd" ];
-    powerManagement.cpuFreqGovernor = "powersave";
-    hardware.cpu.amd.updateMicrocode = true;
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ "kvm-intel" ];
+    boot.extraModulePackages = [ ];
+    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
   hetznerCloud = {
@@ -84,8 +85,4 @@ in
       { path = "/boot2"; devices = [ "/dev/sdb" ]; }
     ];
   };
-
-  # Use special database dataset
-  fileSystems."/var/lib/postgresql" = bindMount "/var/lib/db/postgresql";
-  fileSystems."/var/lib/mysql" = bindMount "/var/lib/db/mysql";
 }

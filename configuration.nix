@@ -6,7 +6,6 @@
     ./base.nix
     ./website
     ./matrix.nix
-    ./backup.nix
   ];
 
   nix-bitcoin.onionServices.bitcoind.public = true;

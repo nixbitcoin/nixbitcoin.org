@@ -46,7 +46,28 @@ with lib;
   systemd.services.mempool.wantedBy = mkForce [];
   systemd.services.fulcrum.wantedBy = mkForce [];
   systemd.services.electrs.wantedBy = mkForce [];
-  systemd.services.matrix-synapse.wantedBy = mkForce [];
+  systemd.services.btcpayserver.wantedBy = mkForce [];
+  systemd.services.nbxplorer.wantedBy = mkForce [];
+  systemd.services.clightning.wantedBy = mkForce [];
+  systemd.services.bitcoind.wantedBy = mkForce [];
+  systemd.services.joinmarket-ob-watcher.wantedBy = mkForce [];
+  systemd.services.joinmarket.wantedBy = mkForce [];
+  systemd.services.rtl.wantedBy = mkForce [];
+  systemd.services.clightning-rest.wantedBy = mkForce [];
+  systemd.services.liquidd.wantedBy = mkForce [];
+
+  security.acme = mkForce {};
+  services.nginx.virtualHosts =
+    let
+      disableACME = {
+	enableACME = mkForce false;
+	forceSSL = mkForce false;
+      };
+    in {
+      "nixbitcoin.org" = disableACME;
+      "mempool.nixbitcoin.org" = disableACME;
+    };
+  mailserver.enable = mkForce false;
 
   boot.cleanTmpDir = true;
   documentation.nixos.enable = false; # Speeds up evaluation
