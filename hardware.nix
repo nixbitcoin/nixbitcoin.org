@@ -84,8 +84,4 @@ in
       { path = "/boot2"; devices = [ "/dev/sdb" ]; }
     ];
   };
-
-  # Use special database dataset
-  fileSystems."/var/lib/postgresql" = bindMount "/var/lib/db/postgresql";
-  fileSystems."/var/lib/mysql" = bindMount "/var/lib/db/mysql";
 }
